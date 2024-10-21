@@ -5,6 +5,7 @@ import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Leerficherobinario {
 
@@ -19,24 +20,29 @@ public class Leerficherobinario {
 			int edad=0;
 			int expectativa=0;
 			int usuario=1;
+			
+			Scanner sc= new Scanner(System.in);
+			int filtroSalario=sc.nextInt();
 			try {
 				
-			while(true) {
-				
-			dni=das.readUTF();
-			nombre=das.readUTF();			
-			apellidos=das.readUTF();
-			edad=das.readInt();
-			expectativa=das.readInt();
-			System.out.println("Usuario: "+usuario);
-			System.out.println(nombre);
-			System.out.println(dni);
-			System.out.println(apellidos);
-			System.out.println(edad);
-			System.out.println(expectativa);
+			
+			System.out.println("Usuarios con expectativa salarial mayor que \n" + filtroSalario + ":");
+            while (das.available() > 0) {
+                 dni = das.readUTF();
+                 nombre = das.readUTF();
+                 apellidos = das.readUTF();
+                 edad = das.readInt();
+                 expectativa = das.readInt();
+                
+                if (expectativa > filtroSalario) {
+                    System.out.println("DNI: " + dni + ", Nombre: " + nombre + ", Apellidos: " + apellidos + ", Edad: " + edad + ", Expectativa Salarial: " + expectativa);
+                }
+                
+            }
 			usuario++;
 			}
-			}
+			
+			
 			catch(EOFException eo) {
 				System.out.println("No hay mas usuarios");
 			}
