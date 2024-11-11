@@ -25,17 +25,18 @@ public class XML2 {
 			DocumentBuilderFactory documento= DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder= documento.newDocumentBuilder();
 			Document doc= builder.parse(new File(ruta));
-			doc.getDocumentElement().normalize();;
-			Element root = doc.getDocumentElement();
-			NodeList ciudades = doc.getElementsByTagName("ciudad");
-			for (int i = 0; i < ciudades.getLength(); i++) {
-				Node nNode=ciudades.item(i);
-				if (nNode.getNodeType()==Node.ELEMENT_NODE) {
+			doc.getDocumentElement().normalize();  //normalizar xml
+			// por si necesito usar el root Element root = doc.getDocumentElement();
+			NodeList ciudades = doc.getElementsByTagName("ciudad");//Saca todos los nodos de ciudad
+			for (int i = 0; i < ciudades.getLength(); i++) { 	//Recorrer nodos
+				Node nNode=ciudades.item(i);	
+				if (nNode.getNodeType()==Node.ELEMENT_NODE) {//Asegurarse que es un nodo
 					Element eElement= (Element)nNode;
 					System.out.println("Ciudad");
 					System.out.println("Nombre : "+eElement.getElementsByTagName("nombre").item(0).getTextContent());
-					System.out.println("Pais:"+eElement.getElementsByTagName("pais").item(0).getAttributes().getNamedItem("continente"));
-					System.out.println(eElement.getElementsByTagName("pais").item(0).getTextContent());		
+					System.out.println("Continente:"+eElement.getElementsByTagName("pais").item(0).getAttributes().getNamedItem("continente").getTextContent());
+					System.out.println(eElement.getElementsByTagName("pais").item(0).getTextContent());	
+					System.out.println();
 							
 				}
 			}
