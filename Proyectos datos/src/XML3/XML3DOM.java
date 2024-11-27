@@ -16,7 +16,7 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class XML3 {
+public class XML3DOM {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -33,6 +33,9 @@ public class XML3 {
 			Element nombre = doc.createElement("nombre");
 			nombre.appendChild(doc.createTextNode("Juan Perez"));
 			empleado.appendChild(nombre);
+			Element apellido = doc.createElement("apellido");
+			apellido.appendChild(doc.createTextNode("Zurron"));
+			nombre.appendChild(apellido);
 			Element departamento = doc.createElement("departamento");
 			departamento.appendChild(doc.createTextNode("IT"));
 			empleado.appendChild(departamento);

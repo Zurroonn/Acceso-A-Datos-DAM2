@@ -26,7 +26,7 @@ public class XML2 {
 			DocumentBuilder builder= documento.newDocumentBuilder();
 			Document doc= builder.parse(new File(ruta));
 			doc.getDocumentElement().normalize();  //normalizar xml
-			// por si necesito usar el root Element root = doc.getDocumentElement();
+			// por si necesito usar el root Element root = doc.getDocumentElement(); 
 			NodeList ciudades = doc.getElementsByTagName("ciudad");//Saca todos los nodos de ciudad
 			for (int i = 0; i < ciudades.getLength(); i++) { 	//Recorrer nodos
 				Node nNode=ciudades.item(i);	
