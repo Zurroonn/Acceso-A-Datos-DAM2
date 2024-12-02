@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="C:/Users/Manana/Downloads/jackson-annotations-2.13.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Manana/Downloads/istack-commons-runtime-3.0.10.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Manana/Downloads/jakarta.activation-api-1.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Manana/Downloads/ojdbc17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
