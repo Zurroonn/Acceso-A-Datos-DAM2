@@ -11,8 +11,8 @@
         <property name="hibernate.hbm2ddl.auto">none</property>
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
-        <mapping resource="Contacts.hbm.xml"/>
-        <mapping resource="Countries.hbm.xml"/>
-        <mapping resource="Customers.hbm.xml"/>
+        <mapping resource="ProgramandoHibernate/Customers.hbm.xml"/>
+        <mapping resource="ProgramandoHibernate/Countries.hbm.xml"/>
+        <mapping resource="ProgramandoHibernate/Contacts.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
