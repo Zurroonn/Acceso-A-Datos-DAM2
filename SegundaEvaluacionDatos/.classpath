@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="C:/Users/Manana/Downloads/jakarta.activation-api-1.2.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Manana/Downloads/ojdbc17.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Manana/Downloads/mongo-java-driver-3.12.14.jar" sourcepath="C:/Users/Manana/.m2/repository/org/mongodb/mongo-java-driver/3.12.14/mongo-java-driver-3.12.14-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/aazur/Downloads/mongo-java-driver-3.12.14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

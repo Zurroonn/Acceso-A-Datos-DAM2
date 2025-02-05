@@ -1,5 +1,3 @@
-package MongoDB1;
-
 import java.util.ArrayList;
 import java.util.List;
  
@@ -8,13 +6,13 @@ import org.bson.Document;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
  
-public class Main {
+public class MaiMongon {
     /**
      * Clase principal para interactuar con la base de datos.
      */
     public static void main(String[] args) {
         // Crear instancia de MongoDBSingleton
-        MongoDBSingletonBiblioteca dbInstance = MongoDBSingletonBiblioteca.getInstance();
+        MongoDBSingletonBiblioteca1 dbInstance = MongoDBSingletonBiblioteca1.getInstance();
  
         // Conectar a la base de datos 'mibasededatos'
 //        dbInstance.connect("mongodb://localhost:27017", "mibasedatos");
