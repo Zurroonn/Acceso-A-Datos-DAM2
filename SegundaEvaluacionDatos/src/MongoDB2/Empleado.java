@@ -1,20 +1,21 @@
 package MongoDB2;
 
 public class Empleado {
-    private String nif;
+    private String NIF;
     private String nombre;
     private String apellidos;
     private double salario;
 
-    public Empleado(String nif, String nombre, String apellidos, double salario) {
-        this.nif = nif;
+    public Empleado(String NIF, String nombre, String apellidos, double salario) {
+        this.NIF = NIF;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.salario = salario;
+        
     }
 
-    public String getNif() {
-        return nif;
+    public String getNIF() {
+        return NIF;
     }
 
     public String getNombre() {
@@ -35,6 +36,12 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "NIF: " + nif + ", Nombre: " + nombre + " " + apellidos + ", Salario: " + salario;
+        return "Empleado{" +
+                "NIF='" + NIF + '\'' +
+                ", Nombre='" + nombre + '\'' +
+                ", Apellidos='" + apellidos + '\'' +
+                ", Salario=" + salario +
+                '}';
     }
+    
 }

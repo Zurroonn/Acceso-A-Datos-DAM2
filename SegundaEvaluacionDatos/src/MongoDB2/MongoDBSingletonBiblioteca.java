@@ -1,44 +1,40 @@
 package MongoDB2;
 
-
-import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+
 import org.bson.Document;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+
 public class MongoDBSingletonBiblioteca {
-    private static MongoDBSingletonBiblioteca instance;
+    private static MongoDBSingletonBiblioteca instancia;
+    private MongoClient cliente;
+    private MongoDatabase database;
 
-    private final MongoClient mongoClient;
-    private final MongoDatabase database;
-
-    // Constructor privado
     private MongoDBSingletonBiblioteca() {
-        this.mongoClient = MongoClients.create("mongodb://localhost:27017"); // URL de MongoDB
-        this.database = mongoClient.getDatabase("mibasedatos"); // Base de datos donde está la colección
+        cliente = MongoClients.create("mongodb://localhost:27017");
+        database = cliente.getDatabase("mibasedatos");
     }
 
-    // Método estático para obtener la instancia única
-    public static synchronized MongoDBSingletonBiblioteca getInstance() {
-        if (instance == null) {
-            instance = new MongoDBSingletonBiblioteca();
+    public static MongoDBSingletonBiblioteca getInstancia() {
+        if (instancia == null) {
+            instancia = new MongoDBSingletonBiblioteca();
         }
-        return instance;
+        return instancia;
     }
 
-    // Método para obtener una colección
-    public MongoCollection<Document> getCollection(String collectionName) {
-    	
-    	if (database!=null) {
-			return database.getCollection(collectionName);
-		}else {
-        throw new IllegalStateException("no se establecio conexion");
-		}
+    public MongoDatabase getDatabase() {
+        return database;
     }
 
-    // Cerrar la conexión
-    public void close() {
-        mongoClient.close();
+    public void cerrarConexion() {
+        if (cliente != null) {
+            cliente.close();
+        }
+    }
+    public MongoCollection<Document> getCollection(String collectionName){
+    	return database.getCollection(collectionName);
     }
 }

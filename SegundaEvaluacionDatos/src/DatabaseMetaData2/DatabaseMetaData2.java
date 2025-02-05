@@ -34,7 +34,7 @@ public class DatabaseMetaData2 {
                     String tableName = tables.getString("TABLE_NAME");
                     String tableType = tables.getString("TABLE_TYPE");
                     System.out.println("Tabla: " + tableName + " (Tipo: " + tableType + ")\n");
-
+  
                     // Obtener columnas de cada tabla
                     System.out.println("  Columnas:\n");
                     try (ResultSet columns = metaData.getColumns(null, user, tableName, null)) {

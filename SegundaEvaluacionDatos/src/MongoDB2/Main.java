@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        DAO empleadoDAO = new DAOimpl(); // ✅ Corrección aquí
+        GruposDAO empleadoDAO = new GruposDAOImpl();
 
         while (true) {
             System.out.println("\nGestión de Empleados - MongoDB");
@@ -17,50 +17,59 @@ public class Main {
             System.out.println("5. Eliminar empleado por NIF");
             System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
-            
+
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); // Consumir salto de línea
 
             switch (opcion) {
                 case 1:
-                    System.out.print("NIF: ");
+                    System.out.print("Ingrese NIF: ");
                     String nif = scanner.nextLine();
-                    System.out.print("Nombre: ");
+                    System.out.print("Ingrese nombre: ");
                     String nombre = scanner.nextLine();
-                    System.out.print("Apellidos: ");
+                    System.out.print("Ingrese apellidos: ");
                     String apellidos = scanner.nextLine();
-                    System.out.print("Salario: ");
+                    System.out.print("Ingrese salario: ");
                     double salario = scanner.nextDouble();
-                    scanner.nextLine(); // Limpiar buffer
                     empleadoDAO.agregarEmpleado(new Empleado(nif, nombre, apellidos, salario));
                     break;
+
                 case 2:
                     System.out.print("Ingrese NIF: ");
-                    Empleado empleado = empleadoDAO.obtenerEmpleadoPorNIF(scanner.nextLine());
-                    System.out.println(empleado != null ? empleado : "Empleado no encontrado.");
+                    nif = scanner.nextLine();
+                    Empleado empleado = empleadoDAO.obtenerEmpleadoPorNIF(nif);
+                    System.out.println((empleado != null) ? empleado : "Empleado no encontrado.");
                     break;
+
                 case 3:
-                    List<Empleado> empleados = empleadoDAO.obtenerTodosEmpleados();
+                    List<Empleado> empleados = empleadoDAO.obtenerTodosLosEmpleados();
                     empleados.forEach(System.out::println);
                     break;
+
                 case 4:
                     System.out.print("Ingrese NIF: ");
-                    String nifActualizar = scanner.nextLine();
-                    System.out.print("Nuevo salario: ");
-                    double nuevoSalario = scanner.nextDouble();
-                    scanner.nextLine(); // Limpiar buffer
-                    empleadoDAO.actualizarSalario(nifActualizar, nuevoSalario);
+                    nif = scanner.nextLine();
+                    System.out.print("Ingrese nuevo salario: ");
+                    salario = scanner.nextDouble();
+
+                    boolean modificado = empleadoDAO.modificarSalario(nif, salario);
+                    System.out.println(modificado ? "Salario actualizado." : "No se encontró el empleado.");
                     break;
+
                 case 5:
                     System.out.print("Ingrese NIF: ");
-                    empleadoDAO.eliminarEmpleado(scanner.nextLine());
+                    nif = scanner.nextLine();
+                    boolean eliminado = empleadoDAO.eliminarEmpleado(nif);
+                    System.out.println(eliminado ? "Empleado eliminado." : "No se encontró el empleado.");
                     break;
+
                 case 6:
                     System.out.println("Saliendo...");
                     scanner.close();
                     return;
+
                 default:
-                    System.out.println("Opción no válida.");
+                    System.out.println("Opción inválida.");
             }
         }
     }

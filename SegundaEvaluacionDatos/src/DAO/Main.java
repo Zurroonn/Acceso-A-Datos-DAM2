@@ -94,6 +94,8 @@ public class  Main{
                         listaAsignaturas.forEach(a -> System.out.println(a.getId() + " - " + a.getNombre()));
                         break;                    
 
+                    case 6:
+                    	
                     case 0:
                         System.out.println("Saliendo...");
                         break;
